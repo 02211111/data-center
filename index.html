@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Datos VR</title>
 
-    <!-- A-Frame (requiere Internet) -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
-    <!-- Componentes personalizados -->
     <script>
-        /* ---------- Componente rack (sin cambios) ---------- */
+        /* ---------- Componente rack ---------- */
         AFRAME.registerComponent('rack', {
             schema: {
                 unidades: { type: 'int', default: 8 },
@@ -47,7 +45,7 @@
             }
         });
 
-        /* ---------- Componente info-rack (CLASE 4 corregido) ---------- */
+        /* ---------- Componente info-rack ---------- */
         AFRAME.registerComponent('info-rack', {
             schema: {
                 titulo:  { type: 'string', default: 'RACK' },
@@ -156,7 +154,7 @@
             }
         });
 
-        /* Genera una textura procedural */
+        /* Textura procedural */
         function crearTextura(tipo) {
             const c = document.createElement('canvas');
             c.width = c.height = 256;
@@ -275,11 +273,18 @@
                 position="0 1.35 -9.78"
                 align="center" width="3" color="#ffffff"></a-text>
 
-        <!-- ===== ALARMA Y SALIDA (CLASE 5) ===== -->
-        <a-light type="point" color="#ff2222" intensity="0.5" 
-                 distance="3" position="1.2 2 -5" 
+        <!-- ===== ALARMA (luces sobre racks con FALLA) ===== -->
+        <!-- Luz de alarma RACK 04 (posición -2, -8) -->
+        <a-light type="point" color="#ff2222" intensity="0.5"
+                 distance="3" position="-2 2.2 -8"
                  animation="property: intensity; from: 0.2; to: 1.4; dir: alternate; dur: 650; loop: true"></a-light>
-        <a-text value="SALIDA" position="0 0.03 -9" rotation="-90 0 0" 
+
+        <!-- Luz de alarma RACK 05 (posición 2, -2) -->
+        <a-light type="point" color="#ff2222" intensity="0.5"
+                 distance="3" position="2 2.2 -2"
+                 animation="property: intensity; from: 0.2; to: 1.4; dir: alternate; dur: 650; loop: true"></a-light>
+
+        <a-text value="SALIDA" position="0 0.03 -9" rotation="-90 0 0"
                 align="center" width="1.8" color="#ffe166"></a-text>
 
         <!-- ===== UNIDAD DE CLIMATIZACIÓN CRAC ===== -->
@@ -357,10 +362,10 @@
         <a-box position="-4 1.5 -4" width="0.2" height="3" depth="12"  color="#325E94"></a-box>
         <a-box position="4 1.5 -4"  width="0.2" height="3" depth="12"  color="#325E94"></a-box>
 
-        <!-- ===== PANEL DE SUPERVISIÓN SIMULADO (CLASE 5) ===== -->
+        <!-- ===== PANEL DE SUPERVISIÓN SIMULADO ===== -->
         <a-plane position="3.85 1.65 -4" rotation="0 -90 0" width="3" height="1.5" color="#102a39"></a-plane>
-        <a-text value="MONITOREO SIMULADO\nTemp: 22 C\nHumedad: 45%\nRacks activos: 7/8\nRACK 05: FALLA" 
-                position="3.80 1.9 -4" rotation="0 -90 0" 
+        <a-text value="MONITOREO SIMULADO\nTemp: 22 C\nHumedad: 45%\nRacks activos: 6/8\nRACK 04 y 05: FALLA"
+                position="3.80 1.9 -4" rotation="0 -90 0"
                 width="2.8" color="#ffffff" align="center"></a-text>
 
         <!-- ===== TECHO ===== -->
@@ -396,7 +401,8 @@
             <a-gltf-model src="#rack-glb" scale="1.1 1.1 1.1"></a-gltf-model>
         </a-entity>
 
-        <a-entity info-rack="titulo: RACK 04; detalle: MONITOREO - ACTIVO; estado: ok"
+        <!-- ✅ CAMBIO: RACK 04 ahora también en FALLA (coincide con su luz roja) -->
+        <a-entity info-rack="titulo: RACK 04; detalle: MONITOREO - FALLA; estado: falla"
                 position="-2 -0.1 -8" rotation="0 90 0">
             <a-gltf-model src="#rack-glb" scale="1.1 1.1 1.1"></a-gltf-model>
         </a-entity>
@@ -422,20 +428,10 @@
             <a-gltf-model src="#rack-glb" scale="1.1 1.1 1.1"></a-gltf-model>
         </a-entity>
 
-        <!-- ===== RÓTULOS DE PASILLO (CLASE 5) — CORREGIDOS ===== -->
-        <!-- Fila izquierda (miran hacia el pasillo con rotation 90) -->
-        <a-text value="RACK 01 - ACTIVO" position="-1.1 2.2 -2" rotation="0 90 0" align="center" width="2" color="#ffffff"></a-text>
-        <a-text value="RACK 04 - ACTIVO" position="-1.1 2.2 -8" rotation="0 90 0" align="center" width="2" color="#ffffff"></a-text>
-
-        <!-- Fila derecha (miran hacia el pasillo con rotation -90) -->
-        <a-text value="RACK 05 - FALLA"  position="1.1 2.2 -2" rotation="0 -90 0" align="center" width="2" color="#ff4444"></a-text>
-        <a-text value="RACK 08 - ACTIVO" position="1.1 2.2 -8" rotation="0 -90 0" align="center" width="2" color="#ffffff"></a-text>
-
-        <!-- Pasillo central -->
+        <!-- ===== PASILLO CENTRAL ===== -->
         <a-text value="PASILLO FRIO" position="0 2.5 -4" align="center" width="3" color="#ffffff"></a-text>
 
         <!-- ===== OTROS MODELOS 3D GLB ===== -->
-        <!-- ✅ ELIMINADA la línea de #servidores-glb (asset inexistente, daba 404) -->
         <a-gltf-model src="#escritorio-glb" position="2.8 0.12 1.50" rotation="0 90 0" scale="0.010 0.010 0.010"></a-gltf-model>
         <a-gltf-model src="#router-glb" position="3.5 0.62 1.5" rotation="0 180 0" scale="1.4 1.4 1.4"></a-gltf-model>
 
