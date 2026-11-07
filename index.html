@@ -362,49 +362,49 @@
         <a-box position="-4 1.5 -4" width="0.2" height="3" depth="12"  color="#325E94"></a-box>
         <a-box position="4 1.5 -4"  width="0.2" height="3" depth="12"  color="#325E94"></a-box>
 
-<!-- ===== PANEL DE SUPERVISIÓN (monitor sobre el escritorio, corregido) ===== -->
+<!-- ===== PANEL DE SUPERVISIÓN (monitor sobre el escritorio, 2cm más ancho) ===== -->
 <a-entity position="2.8 1.65 1.9" rotation="0 -180 0" scale="0.35 0.35 0.35">
 
-    <!-- Marco exterior metálico -->
-    <a-box position="0 0 0.03" width="3.1" height="1.6" depth="0.06" 
+    <!-- Marco exterior metálico (antes 3.25 → ahora 3.31) -->
+    <a-box position="0 0 0.03" width="3.31" height="1.6" depth="0.06" 
            material="color: #2a3540; metalness: 0.9; roughness: 0.4"></a-box>
     
-    <!-- Bisel interior oscuro -->
-    <a-box position="0 0 0.062" width="2.95" height="1.45" depth="0.005" 
+    <!-- Bisel interior oscuro (antes 3.10 → ahora 3.16) -->
+    <a-box position="0 0 0.062" width="3.16" height="1.45" depth="0.005" 
            material="color: #0a0f14; metalness: 0.5; roughness: 0.7"></a-box>
     
-    <!-- Pantalla negra -->
-    <a-plane position="0 0 0.065" width="2.82" height="1.32" 
+    <!-- Pantalla negra (antes 2.98 → ahora 3.04) -->
+    <a-plane position="0 0 0.065" width="3.04" height="1.32" 
              material="color: #010604; shader: flat"></a-plane>
     
-    <!-- Barra de título -->
-    <a-plane position="0 0.565 0.066" width="2.82" height="0.12" color="#003a1a"></a-plane>
+    <!-- Barra de título (antes 2.98 → ahora 3.04) -->
+    <a-plane position="0 0.565 0.066" width="3.04" height="0.12" color="#003a1a"></a-plane>
     <a-text value="SISTEMA DE MONITOREO  —  CPD-01"
             position="0 0.565 0.068"
-            align="center" width="1.8" color="#00ff66"></a-text>
+            align="center" width="1.5" color="#00ff66"></a-text>
     
-    <!-- Texto principal (terminal verde) -->
-    <a-text value="> SISTEMA OPERATIVO\n\n> Temp:      22.4 C\n> Humedad:   45 %\n> Racks:     6 / 8\n\n> RACK 04:   FALLA\n> RACK 05:   FALLA"
-            position="-0.85 -0.02 0.068"
-            align="left" width="1.7" color="#00ff66"></a-text>
+    <!-- Texto principal (mismo x=-0.90, pero ahora tiene más margen a la izquierda) -->
+    <a-text value="> SISTEMA OPERATIVO\n Temp:      22.4 C\n Humedad:   45 %\n Racks:     6 / 8\n\n RACK 04:   FALLA\n RACK 05:   FALLA"
+            position="-0.90 -0.02 0.068"
+            align="left" width="3" color="#00ff66"></a-text>
     
-    <!-- LED verde -->
-    <a-sphere position="1.28 0.565 0.072" radius="0.028" 
+    <!-- LED verde (antes 1.35 → ahora 1.38) -->
+    <a-sphere position="1.38 0.565 0.072" radius="0.028" 
               material="color: #00ff66; emissive: #00ff66; emissiveIntensity: 1.2"></a-sphere>
     
-    <!-- LED rojo parpadeante -->
-    <a-sphere position="1.38 0.565 0.072" radius="0.028" 
+    <!-- LED rojo parpadeante (antes 1.45 → ahora 1.48) -->
+    <a-sphere position="1.48 0.565 0.072" radius="0.028" 
               material="color: #ff2222; emissive: #ff2222; emissiveIntensity: 1.5"
               animation="property: material.emissiveIntensity; from: 0.3; to: 2.0; dir: alternate; dur: 500; loop: true"></a-sphere>
     
-    <!-- Tornillos -->
-    <a-sphere position="-1.50 0.75 0.065" radius="0.025" 
+    <!-- Tornillos (antes ±1.58 → ahora ±1.61) -->
+    <a-sphere position="-1.61 0.75 0.065" radius="0.025" 
               material="color: #5a6778; metalness: 0.9; roughness: 0.3"></a-sphere>
-    <a-sphere position="1.50 0.75 0.065" radius="0.025" 
+    <a-sphere position="1.61 0.75 0.065" radius="0.025" 
               material="color: #5a6778; metalness: 0.9; roughness: 0.3"></a-sphere>
-    <a-sphere position="-1.50 -0.75 0.065" radius="0.025" 
+    <a-sphere position="-1.61 -0.75 0.065" radius="0.025" 
               material="color: #5a6778; metalness: 0.9; roughness: 0.3"></a-sphere>
-    <a-sphere position="1.50 -0.75 0.065" radius="0.025" 
+    <a-sphere position="1.61 -0.75 0.065" radius="0.025" 
               material="color: #5a6778; metalness: 0.9; roughness: 0.3"></a-sphere>
     
     <!-- Etiqueta -->
