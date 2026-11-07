@@ -362,27 +362,27 @@
         <a-box position="-4 1.5 -4" width="0.2" height="3" depth="12"  color="#325E94"></a-box>
         <a-box position="4 1.5 -4"  width="0.2" height="3" depth="12"  color="#325E94"></a-box>
 
-        <!-- ===== PANEL DE SUPERVISIÓN (monitor industrial) ===== -->
-<a-entity position="3.90 1.65 -4" rotation="0 -90 0">
+<!-- ===== PANEL DE SUPERVISIÓN (monitor industrial, sobre el escritorio) ===== -->
+<a-entity position="3.90 1.65 1.50" rotation="0 -90 0">
     <!-- Marco exterior metálico (bisel del monitor) -->
     <a-box position="0 0 0.03" width="3.1" height="1.6" depth="0.06" 
            material="color: #2a3540; metalness: 0.9; roughness: 0.4"></a-box>
     
-    <!-- Bisel interior oscuro (marco fino alrededor de la pantalla) -->
+    <!-- Bisel interior oscuro -->
     <a-box position="0 0 0.062" width="2.95" height="1.45" depth="0.005" 
            material="color: #0a0f14; metalness: 0.5; roughness: 0.7"></a-box>
     
-    <!-- Pantalla negra (shader flat = no recibe luz, siempre negra) -->
+    <!-- Pantalla negra -->
     <a-plane position="0 0 0.065" width="2.82" height="1.32" 
              material="color: #010604; shader: flat"></a-plane>
     
-    <!-- Barra de título superior (franja verde oscuro) -->
+    <!-- Barra de título superior -->
     <a-plane position="0 0.565 0.066" width="2.82" height="0.12" color="#003a1a"></a-plane>
     <a-text value="SISTEMA DE MONITOREO  —  CPD-01"
             position="0 0.565 0.068"
             align="center" width="1.8" color="#00ff66"></a-text>
     
-    <!-- Texto principal estilo terminal (verde) -->
+    <!-- Texto principal estilo terminal -->
     <a-text value="> SISTEMA OPERATIVO\n\n> Temp:      22.4 C\n> Humedad:   45 %\n> Racks:     6 / 8\n\n> RACK 04:   FALLA\n> RACK 05:   FALLA"
             position="-0.85 -0.02 0.068"
             align="left" width="1.7" color="#00ff66"></a-text>
@@ -396,7 +396,7 @@
               material="color: #ff2222; emissive: #ff2222; emissiveIntensity: 1.5"
               animation="property: material.emissiveIntensity; from: 0.3; to: 2.0; dir: alternate; dur: 500; loop: true"></a-sphere>
     
-    <!-- Tornillos metálicos en las 4 esquinas -->
+    <!-- Tornillos metálicos -->
     <a-sphere position="-1.50 0.75 0.065" radius="0.025" 
               material="color: #5a6778; metalness: 0.9; roughness: 0.3"></a-sphere>
     <a-sphere position="1.50 0.75 0.065" radius="0.025" 
